@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic input types</title>
+    <link rel="stylesheet" href="./SimpleFormStyle.css">
+</head>
+
+<body>
+    <form>
+        <header class="headerContainer">
+            <h1>HTML 5 Form Input Fields</h1>
+        </header>
+        <div>
+            <label for="text">First Name</label>
+            <input type="text" id="text" name="text">
+            <error-output class="text-error" for="text"></error-output>
+        </div>
+        <div>
+            <label for="pwd">password</label>
+            <input type="password" id="pwd" name="pwd" />
+            <error-output class="text-error" for="password"></error-output>
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+            <error-output class="email-error" for="email"></error-output>
+        </div>
+        <div>
+            <label for="url">URL:</label>
+            <input type="url" id="url" name="url">
+        </div>
+        <div>
+            <label for="number">Number :</label>
+            <input type="number" id="number" name="number">
+        </div>
+        <div>
+            <label for="tel">Telephone number:</label>
+            <input type="tel" id="tel" name="tel">
+            <error-output class="tel-error" for="tel"></error-output>
+        </div>
+        <div>
+            <label for="search">search input type:</label>
+            <input type="search" id="search" name="search">
+        </div>
+        <div class="nativeDateTimePicker">
+            <label for="party">Date and Time:</label>
+            <input type="datetime-local" id="party" name="bday">
+            <span class="validity"></span>
+        </div>
+        <div>
+            <label for="salary">Salary:</label>
+            <input type="range" id="salary" name="salary" min="20000" max="70000" step="100" value="40000">
+            <output class="salary-output" for="salary">40000</output>
+        </div>
+        <div>
+            <button>Submit</button>
+        </div>
+    </form>
+    <script>
+        const text = document.querySelector('#text');
+        const textError = document.querySelector('.text-error');
+        text.addEventListener('input', function() {
+            let firstNameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$');
+            if (firstNameRegex.test(text.value))
+                textError.textContent = "";
+            else textError.textContent = "First Name is Incorrect";
+        });
+
+        const email = document.querySelector("#email");
+        const emailError = document.querySelector(".email-error");
+        email.addEventListener('input', function() {
+            let emailRegex = RegExp('^[a-zA-Z0-9+-]+(?:\\.[a-zA-Z0-9-]+)*@[a-zA-Z0-9]+(?:\\.[a-zA-Z]{2,}){1,2}$');
+            if (emailRegex.test(email.value))
+                emailError.textContent = "";
+            else emailError.textContent = "Email is Incorrect";
+        });
+
+        const mobileNumber = document.querySelector('#tel');
+        const mobileError = document.querySelector('.tel-error');
+        tel.addEventListener('input', function() {
+            let mobileRegex = RegExp("(0|91)?\\s{1}[6-9][0-9]{9}");
+            if (mobileRegex.test(mobileNumber.value))
+                mobileError.textContent = "";
+            else
+                mobileError.textContent = "invalid mobile number";
+
+        });
+
+        const salary = document.querySelector('#salary')
+        const output = document.querySelector('.salary-output')
+        output.textContent = salary.value;
+        salary.addEventListener('input', function() {
+            output.textContent = salary.value
+        });
+
+        const password = document.querySelector("#password")
+        const passwordError = document.querySelector(".password-error");
+        password.addEventListener("Input", function() {
+            let passwordREpression = RegExp("^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$");
+            if (passwordREpression.test(password.value))
+                passwordError.textContent = "";
+            else passwordError.textContent = "invalidvalid password";
+        });
+    </script>
+</body>
+
+</html>
