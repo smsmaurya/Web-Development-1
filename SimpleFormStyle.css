@@ -4,6 +4,7 @@ input {
 }
 
 body {
+    background-color: rgb(156, 148, 226);
     width: 100%;
     max-width: 600px;
     margin: 0px auto;
@@ -14,9 +15,10 @@ body {
     display: flex;
     flex-flow: column wrap;
     align-content: center;
-    background: tomato;
+    background: rgb(71, 157, 255);
     font-weight: bold;
     margin-bottom: 20px;
+    border-radius: 14px;
 }
 
 form {
@@ -30,11 +32,17 @@ div {
     align-items: center;
 }
 
-label,
-input,
-button {
-    font-size: 16px;
-    line-height: 1.5;
+input[type="submit"],
+input[type="reset"] {
+    background: #e61236;
+    padding: 6px 8px;
+    margin: 11px 0 8px;
+    display: inline-block;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
 }
 
 label {
@@ -43,13 +51,16 @@ label {
     margin-right: 2%;
 }
 
-input {
-    flex: auto;
+input[type="submit"]:hover {
+    background: #02721a;
 }
 
-button {
-    width: 70%;
-    margin: 0 auto;
+input[type="reset"]:hover {
+    background: #02721a;
+}
+
+input {
+    flex: auto;
 }
 
 error-output {
